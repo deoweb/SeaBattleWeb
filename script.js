@@ -5,7 +5,8 @@ var shipsnum = 0;
 var servershipsnumber=5;
 
 makeserverships();
-fuckwords = ["You kill me!", "O no!", "(((((((", ":-(", "oh(", "fuck.."]
+fuckwords = ["You kill me!", "O no!", "(((((((", ":-(", "oh(", "fuck.."];
+ahahawords = ["Yes!!","Camon!!!","Yea!", "Ahahaha!!!", "Eeeeee!"]
 
 for (var x = 0; x < 10; x++) {
 	for (var y = 0; y < 10; y++) {	
@@ -15,7 +16,7 @@ for (var x = 0; x < 10; x++) {
 					shipsnum++;		
 					$(this).css('background-color','black');
 					clientships[shipsnum] = $(this).attr('id');
-					$("#message").text("Make your ships (" + (5-shipsnum) + " ships)");
+					$("#message").text("Place your ships (" + (5-shipsnum) + " ships)");
 					if (shipsnum==5) {stopmakeclientship()};
 				};
 			});
@@ -24,8 +25,6 @@ for (var x = 0; x < 10; x++) {
 };
 setTimeout($('#topwindow').fadeOut(5000, "linear"), 10000);
 
-
-//battle
 function stopmakeclientship(){
 	$('div').off("click");
 	$("#message").text("Fight!!!");
@@ -34,6 +33,7 @@ function stopmakeclientship(){
 		$("#"+serverships[i]).click(function(){
 			console.log("kill");
 			servershipsnumber--;
+			if (servershipsnumber == 0) {$('#topwindow').html("<br><br>You destroid all my ships((((");$('#topwindow').fadeIn();$('div').off("click");};
 			$(this).css("background-color", "red");
 			$(this).text("X");
 			$("#message").text(fuckwords[mathrandom(fuckwords.length)]);
@@ -67,7 +67,7 @@ function showsqr(x,y,part){
 }
 
 function servershoot(){
-	shootpoint = makerandom();
-	$("#userpart"+shootpoint).css("background-color","Coral");
-
+	userpart = "#userpart"+ makerandom();
+	if ($(userpart).css("background-color")=="rgb(0, 0, 0)") {$(userpart).css("background-color", "red");$(userpart).text("X");$("#message").text(ahahawords[mathrandom(ahahawords.length)]);}
+	else $(userpart).css("background-color","Coral");
 }
