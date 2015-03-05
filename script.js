@@ -23,7 +23,11 @@ for (var x = 0; x < 10; x++) {
 		showsqr(x,y,'cpupart');
 	};
 };
+
+
 setTimeout($('#topwindow').fadeOut(5000, "linear"), 10000);
+$("#prog").animate({'opacity' : 1}, 4000)
+
 
 function stopmakeclientship(){
 	$('div').off("click");
@@ -31,9 +35,9 @@ function stopmakeclientship(){
 	$("[id*='cpupart']").click(function(){shootpoint = $(this).attr('id');$(this).css("background-color", "Coral"); servershoot();});
 	for (var i = 1; i < 11; i++) {
 		$("#"+serverships[i]).click(function(){
-			console.log("kill");
 			servershipsnumber--;
-			if (servershipsnumber == 0) {$('#topwindow').html("<br><br>You destroid all my ships((((");$('#topwindow').fadeIn();$('div').off("click");};
+			if (servershipsnumber == 0) {$("#prog").animate({
+         'opacity' : 0.1});$('#topwindow').html("<br><br>You destroid all my ships((((");$('#topwindow').fadeIn();$('div').off("click");};
 			$(this).css("background-color", "red");
 			$(this).text("X");
 			$("#message").text(fuckwords[mathrandom(fuckwords.length)]);
