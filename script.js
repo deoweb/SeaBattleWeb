@@ -1,17 +1,13 @@
-
-var clientships = [];
 var serverships = [];
-var shipsnum = 0;
-var servershipsnumber=5;
 
 makeserverships();
-fuckwords = ["You kill me!", "O no!", "(((((((", ":-(", "oh(", "fuck.."];
-ahahawords = ["Yes!!","Camon!!!","Yea!", "Ahahaha!!!", "Eeeeee!"]
 
 for (var x = 0; x < 10; x++) {
 	for (var y = 0; y < 10; y++) {	
 		showsqr(x,y,'userpart');
 		$("#userpartx"+x+'y'+y).click(function(){
+			var shipsnum = 0;
+			var clientships = [];
 			if ($(this).css("background-color")=="rgb(128, 128, 128)") {	
 					shipsnum++;		
 					$(this).css('background-color','black');
@@ -30,6 +26,8 @@ $("#prog").animate({'opacity' : 1}, 4000)
 
 
 function stopmakeclientship(){
+	var fuckwords = ["You kill me!", "O no!", "(((((((", ":-(", "oh(", "fuck.."];
+	var servershipsnumber=5;
 	$('div').off("click");
 	$("#message").text("Fight!!!");
 	$("[id*='cpupart']").click(function(){shootpoint = $(this).attr('id');$(this).css("background-color", "Coral"); servershoot();});
@@ -71,6 +69,7 @@ function showsqr(x,y,part){
 }
 
 function servershoot(){
+	ahahawords = ["Yes!!","Camon!!!","Yea!", "Ahahaha!!!", "Eeeeee!"];
 	userpart = "#userpart"+ makerandom();
 	if ($(userpart).css("background-color")=="rgb(0, 0, 0)") {$(userpart).css("background-color", "red");$(userpart).text("X");$("#message").text(ahahawords[mathrandom(ahahawords.length)]);}
 	else $(userpart).css("background-color","Coral");
